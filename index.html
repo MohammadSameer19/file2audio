@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File to Audio Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <h1>🎵 File to Audio Converter</h1>
+            <p>Convert any file to audio and back - 100% client-side, no uploads</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="encode">Encode File</button>
+            <button class="tab-btn" data-tab="decode">Decode Audio</button>
+        </div>
+
+        <!-- Encode Tab -->
+        <div id="encode-tab" class="tab-content active">
+            <div class="upload-area" id="image-upload-area">
+                <input type="file" id="image-input" multiple hidden>
+                <div class="upload-placeholder">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                        <polyline points="13 2 13 9 20 9"/>
+                    </svg>
+                    <p>Click to select file(s) or drag & drop</p>
+                    <span class="file-types">Any file type supported • Multiple files allowed</span>
+                </div>
+            </div>
+
+            <div id="image-preview" class="preview hidden">
+                <div id="files-list" class="files-list"></div>
+                <div class="file-info">
+                    <span id="file-count"></span>
+                    <span id="total-size"></span>
+                </div>
+            </div>
+
+            <button id="encode-btn" class="action-btn" disabled>
+                <span>Convert to Audio</span>
+            </button>
+
+            <div id="encryption-options" class="encryption-box hidden">
+                <h4>🔒 Encryption (Optional)</h4>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="enable-encryption">
+                    <span>Enable password protection</span>
+                </label>
+                <div id="password-fields" class="password-fields hidden">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="encode-password" placeholder="Enter password" class="password-input">
+                        <button type="button" class="password-toggle" data-target="encode-password" aria-label="Toggle password visibility">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg class="eye-off-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="encode-password-confirm" placeholder="Confirm password" class="password-input">
+                        <button type="button" class="password-toggle" data-target="encode-password-confirm" aria-label="Toggle password visibility">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg class="eye-off-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="password-hint">Use a strong password (min 8 characters)</p>
+                </div>
+            </div>
+
+            <div id="encode-progress" class="progress-container hidden">
+                <div class="progress-bar">
+                    <div id="encode-progress-fill" class="progress-fill"></div>
+                </div>
+                <p id="encode-status">Processing...</p>
+            </div>
+
+            <div id="encode-result" class="result-container hidden">
+                <h3>✓ Audio Generated!</h3>
+                <audio id="result-audio" controls></audio>
+                <div class="result-info">
+                    <p>Duration: <span id="audio-duration"></span></p>
+                    <p>Size: <span id="audio-size"></span></p>
+                </div>
+                <button id="download-audio-btn" class="download-btn">Download Audio</button>
+            </div>
+        </div>
+
+        <!-- Decode Tab -->
+        <div id="decode-tab" class="tab-content">
+            <div class="upload-area" id="audio-upload-area">
+                <input type="file" id="audio-input" accept="audio/wav" hidden>
+                <div class="upload-placeholder">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18V5l12-2v13"/>
+                        <circle cx="6" cy="18" r="3"/>
+                        <circle cx="18" cy="16" r="3"/>
+                    </svg>
+                    <p>Click to select an audio file or drag & drop</p>
+                    <span class="file-types">WAV files only</span>
+                </div>
+            </div>
+
+            <div id="audio-preview" class="preview hidden">
+                <audio id="preview-audio" controls></audio>
+                <div class="file-info">
+                    <span id="audio-name"></span>
+                    <span id="audio-file-size"></span>
+                </div>
+            </div>
+
+            <button id="decode-btn" class="action-btn" disabled>
+                <span>Convert to File</span>
+            </button>
+
+            <div id="decryption-options" class="encryption-box hidden">
+                <h4>🔓 Decryption</h4>
+                <p class="info-text">This file is encrypted. Enter password to decrypt:</p>
+                <div class="password-input-wrapper">
+                    <input type="password" id="decode-password" placeholder="Enter password" class="password-input">
+                    <button type="button" class="password-toggle" data-target="decode-password" aria-label="Toggle password visibility">
+                        <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <svg class="eye-off-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                            <line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="decode-progress" class="progress-container hidden">
+                <div class="progress-bar">
+                    <div id="decode-progress-fill" class="progress-fill"></div>
+                </div>
+                <p id="decode-status">Processing...</p>
+            </div>
+
+            <div id="decode-result" class="result-container hidden">
+                <h3>✓ File(s) Restored!</h3>
+                <div id="decoded-files-list" class="files-list"></div>
+                <div class="result-info">
+                    <p id="decoded-file-info"></p>
+                </div>
+                <button id="download-all-btn" class="download-btn hidden">Download All Files</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="info-box">
+                <h4>How it works</h4>
+                <p>This tool uses direct PCM encoding to convert any file data into audio samples. 
+                   Two bytes are packed into each 16-bit audio sample, making the audio file the same size as your original file. 
+                   All processing happens in your browser - no data is uploaded to any server.</p>
+                <ul>
+                    <li>Works with ANY file type (images, documents, videos, archives, etc.)</li>
+                    <li>Support for multiple files - combine many files into one audio</li>
+                    <li>Optional AES-256-GCM encryption with password protection</li>
+                    <li>Audio file size = Total files size + small header</li>
+                    <li>Sample rate: 202.86 kHz (4.6x shorter audio than standard)</li>
+                    <li>100% efficient encoding (2 bytes per sample)</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="crypto.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

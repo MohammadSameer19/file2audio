@@ -1,0 +1,19 @@
+# File to Audio Converter - Python Requirements
+
+# Core functionality (NO external dependencies required!)
+# The tool uses only Python standard library for basic encoding/decoding:
+# - wave (audio file handling)
+# - struct (binary data packing)
+# - os (file operations)
+
+# OPTIONAL: For encryption support only
+# Install with: pip install cryptography
+# cryptography>=41.0.0
+
+# Python 3.6+ required
+
+# To install encryption support:
+# pip install cryptography
+
+# To use without encryption:
+# No installation needed! Just run with Python 3.6+
