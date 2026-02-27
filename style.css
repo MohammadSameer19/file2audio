@@ -78,6 +78,32 @@ header {
     display: none;
 }
 
+.github-link {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.github-link:hover {
+    border-color: var(--text-secondary);
+    transform: translateY(-2px);
+}
+
+.github-link svg {
+    color: var(--text-primary);
+}
+
 header h1 {
     font-size: 2.5em;
     font-weight: 700;
