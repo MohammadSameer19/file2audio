@@ -191,33 +191,6 @@ When you enable encryption:
 5. **Creative Projects** - Data art, audio-visual experiments
 6. **Stealth Communication** - Files disguised as audio
 
-## Deployment
-
-### Deploy to Vercel
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-```
-
-Or click: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-### Deploy to GitHub Pages
-
-1. Enable GitHub Pages in repository settings
-2. Select "main" branch and "/" (root) folder
-3. Your site will be live at: `https://yourusername.github.io/repo-name`
-
-### Deploy Anywhere
-
-Since it's 100% client-side, just upload these files to any web host:
-- `index.html`
-- `script.js`
-- `style.css`
-
 ## Project Structure
 
 ```

@@ -17,9 +17,6 @@ This tool converts any file into audio format (WAV) using direct PCM encoding, a
 - **Batch upload**: Select or drag & drop multiple files at once
 - **File management**: Add more files, remove individual files before encoding
 - **Archive format**: All files combined into single audio with custom archive format
-- **Individual preview**: Each file shown with icon, name, and size
-- **Flexible download**: Download all files at once or individually after decoding
-- **File icons**: Visual file type indicators (📄 PDF, 🖼️ images, 💻 code, etc.)
 
 ### 3. Efficient Direct PCM Encoding
 - **Algorithm**: Direct PCM (Pulse Code Modulation)
@@ -481,9 +478,7 @@ For each file:
 ## Code Quality & Best Practices
 
 ### Clean Code
-✅ Modular architecture (crypto.js + app.js separation)  
-✅ No debug console.log statements  
-✅ Comprehensive error handling  
+✅ Modular architecture (crypto.js + app.js separation)   
 ✅ Input validation and sanitization  
 ✅ Password trimming to prevent whitespace issues  
 ✅ Proper memory cleanup (URL.revokeObjectURL)  
@@ -524,8 +519,3 @@ MIT License - Free for personal and commercial use
 This tool is for educational and legitimate use cases. Do not abuse cloud storage services or violate their terms of service. Always respect copyright and privacy laws.
 
 ---
-
-**Last Updated:** 2024  
-**Version:** 2.0  
-**Code Lines:** 856 (JS) + 310 (Python) = 1,166 total  
-**Status:** Production-ready ✅
